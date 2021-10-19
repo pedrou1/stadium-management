@@ -1,4 +1,4 @@
-CREATE TABLE Clients  
+CREATE TABLE Administrators  
 (  
 	[AdministratorId] INT IDENTITY (1, 1),
 	[Name] VARCHAR(50) NOT NULL, 

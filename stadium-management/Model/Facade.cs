@@ -8,36 +8,46 @@ using System.Web;
 
 namespace stadium_management.Model
 {
-    public class Administrators
+    public class Facade
     {
+        public static SignInClientOut SignInClient(Client input)
+        {
+            return Clients.SignInClient(input);
+        }
+
+        public static SignUpClientOut SignUpClient(Client input)
+        {
+            return Clients.SignUpClient(input);
+        }
+
         public static SignInAdministratorOut SignInAdministrator(Administrator input)
         {
-            return Persistence.Administrators.SignInAdministrator(input);
+            return Administrators.SignInAdministrator(input);
         }
 
         public static AddAdministratorOut AddAdministrator(Administrator input)
         {
-            return Persistence.Administrators.AddAdministrator(input);
+            return Administrators.AddAdministrator(input);
         }
 
         public static GetAdministratorsOut GetAdministrators(GetAdministratorsIn input)
         {
-            return Persistence.Administrators.GetAdministrators(input);
+            return Administrators.GetAdministrators(input);
         }
 
         public static DeleteAdministratorOut DeleteAdministrator(Administrator input)
         {
-            return Persistence.Administrators.DeleteAdministrator(input);
+            return Administrators.DeleteAdministrator(input);
         }
 
         public static GetAdministratorByIdOut GetAdministratorById(Administrator input)
         {
-            return Persistence.Administrators.GetAdministratorById(input);
+            return Administrators.GetAdministratorById(input);
         }
 
         public static UpdateAdministratorOut UpdateAdministrator(Administrator input)
         {
-            return Persistence.Administrators.UpdateAdministrator(input);
+            return Administrators.UpdateAdministrator(input);
         }
     }
 }
