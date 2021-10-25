@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.master.cs" Inherits="stadium_management.User" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/Frontend/Styles/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="/Frontend/Styles/mdb.min.css" />
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="/Frontend/Scripts/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">
+
+         html, body {
+            padding-top: 50px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/Frontend/Scripts/mdb.min.js"></script>
+
+    <form runat="server" style="min-height: 94%">
+        <header>
+            <nav class="navbar-fixed-top navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Frontend/Forms/HomePublic.aspx">Inicio</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link" id="linkSignUp" runat="server" href="/Frontend/Forms/RegisterClient.aspx">Crea tu cuenta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="linkLogin" runat="server" href="/Frontend/Forms/LoginUser.aspx">Ingresa</a>
+                        </li>
+                        <li runat="server" id="dpdUser" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user">  Mi Cuenta</i>
+                                <asp:Label ID="userName" runat="server"></asp:Label>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                                aria-labelledby="navbarDropdownMenuLink">
+                                <asp:Button class="dropdown-item" ID="btnEndSession" Text="Cerrar sesion" runat="server" CausesValidation="false" OnClick="btnEndSession_Click" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div id="wrap">
+            <div id="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+        </div>
+
+    </form>
+     <footer class="page-footer font-small bg-primary">
+            <div class="text-center py-3">
+                ©️ 2021 Copyright: Pedro Urrutia
+            </div>
+        </footer>
+</body>
+</html>

@@ -5,9 +5,12 @@ using System.Web;
 
 namespace stadium_management.CrossCuttingConcerns.Entities
 {
-    public class Order
+    public class OrderLine
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public Event Event { get; set; }
+        public int Cost { get; set; }
+        public int SeatsStandard { get; set; }
+        public int SeatsPlus { get; set; }
     }
 }

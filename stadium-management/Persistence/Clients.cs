@@ -11,7 +11,7 @@ namespace stadium_management.Persistence
 {
     public class Clients : Connection
     {
-        public static SignUpClientOut SignUpClient(Client clientIn)
+        public static SignUpClientOut SignUpClient(Client ClientIn)
         {
             SignUpClientOut result = new SignUpClientOut { OperationResult = OperationResult.InvalidUser };
             try
@@ -24,7 +24,7 @@ namespace stadium_management.Persistence
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new SqlParameter("@Username", clientIn.Username));
+                    cmd.Parameters.Add(new SqlParameter("@Username", ClientIn.Username));
 
                     var returnValue = cmd.Parameters.Add("@ClientExists", SqlDbType.Int);
                     returnValue.Direction = ParameterDirection.ReturnValue;
@@ -40,10 +40,10 @@ namespace stadium_management.Persistence
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add(new SqlParameter("@Name", clientIn.Name));
-                        cmd.Parameters.Add(new SqlParameter("@Lastname", clientIn.LastName));
-                        cmd.Parameters.Add(new SqlParameter("@Password", clientIn.Password));
-                        cmd.Parameters.Add(new SqlParameter("@Username", clientIn.Username));
+                        cmd.Parameters.Add(new SqlParameter("@Name", ClientIn.Name));
+                        cmd.Parameters.Add(new SqlParameter("@Lastname", ClientIn.LastName));
+                        cmd.Parameters.Add(new SqlParameter("@Password", ClientIn.Password));
+                        cmd.Parameters.Add(new SqlParameter("@Username", ClientIn.Username));
 
                         int rtnInsert = Convert.ToInt32(cmd.ExecuteScalar());
                         if (rtnInsert > 0)
@@ -51,10 +51,10 @@ namespace stadium_management.Persistence
                             result.Client = new Client
                             {
                                 Id = rtnInsert,
-                                Name = clientIn.Name,
-                                LastName = clientIn.LastName,
-                                Password = clientIn.Password,
-                                Username = clientIn.Username,
+                                Name = ClientIn.Name,
+                                LastName = ClientIn.LastName,
+                                Password = ClientIn.Password,
+                                Username = ClientIn.Username,
                                 IsDeleted = false
                             };
                             result.OperationResult = OperationResult.Success;
@@ -79,7 +79,7 @@ namespace stadium_management.Persistence
             return result;
         }
 
-        public static SignInClientOut SignInClient(Client clientIn)
+        public static SignInClientOut SignInClient(Client ClientIn)
         {
             SignInClientOut result = new SignInClientOut { OperationResult = OperationResult.InvalidUser };
             Client client = new Client();
@@ -93,8 +93,8 @@ namespace stadium_management.Persistence
                     CommandType = CommandType.StoredProcedure
                 };
 
-                cmd.Parameters.Add(new SqlParameter("@Username", clientIn.Username));
-                cmd.Parameters.Add(new SqlParameter("@Password", clientIn.Password));
+                cmd.Parameters.Add(new SqlParameter("@Username", ClientIn.Username));
+                cmd.Parameters.Add(new SqlParameter("@Password", ClientIn.Password));
 
                 using (SqlDataReader oReader = cmd.ExecuteReader())
                 {

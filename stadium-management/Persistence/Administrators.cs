@@ -12,7 +12,7 @@ namespace stadium_management.Persistence
 {
     public class Administrators : Connection
     {
-        public static SignInAdministratorOut SignInAdministrator(Administrator adminIn)
+        public static SignInAdministratorOut SignInAdministrator(Administrator AdminIn)
         {
             SignInAdministratorOut result = new SignInAdministratorOut { OperationResult = OperationResult.InvalidUser };
             Administrator administrator = new Administrator();
@@ -25,8 +25,8 @@ namespace stadium_management.Persistence
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(new SqlParameter("@Username", adminIn.Username));
-                cmd.Parameters.Add(new SqlParameter("@Password", adminIn.Password));
+                cmd.Parameters.Add(new SqlParameter("@Username", AdminIn.Username));
+                cmd.Parameters.Add(new SqlParameter("@Password", AdminIn.Password));
 
                 using (SqlDataReader oReader = cmd.ExecuteReader())
                 {
@@ -61,7 +61,7 @@ namespace stadium_management.Persistence
         }
 
 
-        public static GetAdministratorsOut GetAdministrators(GetAdministratorsIn adminIn)
+        public static GetAdministratorsOut GetAdministrators(GetAdministratorsIn AdminIn)
         {
             GetAdministratorsOut result = new GetAdministratorsOut { OperationResult = OperationResult.Error, Administrators = new List<Administrator>() };
             try
@@ -77,14 +77,14 @@ namespace stadium_management.Persistence
                 SqlParameter paramStartIndex = new SqlParameter
                 {
                     ParameterName = "@PageIndex",
-                    Value = adminIn.PageIndex
+                    Value = AdminIn.PageIndex
                 };
                 cmd.Parameters.Add(paramStartIndex);
 
                 SqlParameter paramMaximumRows = new SqlParameter
                 {
                     ParameterName = "@PageSize",
-                    Value = adminIn.PageSize
+                    Value = AdminIn.PageSize
                 };
                 cmd.Parameters.Add(paramMaximumRows);
 
@@ -124,7 +124,7 @@ namespace stadium_management.Persistence
             return result;
         }
 
-        public static AddAdministratorOut AddAdministrator(Administrator adminIn)
+        public static AddAdministratorOut AddAdministrator(Administrator AdminIn)
         {
             AddAdministratorOut result = new AddAdministratorOut { OperationResult = OperationResult.InvalidUser };
             try
@@ -137,7 +137,7 @@ namespace stadium_management.Persistence
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new SqlParameter("@Username", adminIn.Username));
+                    cmd.Parameters.Add(new SqlParameter("@Username", AdminIn.Username));
 
                     var returnValue = cmd.Parameters.Add("@AdministratorExist", SqlDbType.Int);
                     returnValue.Direction = ParameterDirection.ReturnValue;
@@ -153,12 +153,12 @@ namespace stadium_management.Persistence
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add(new SqlParameter("@Name", adminIn.Name));
-                        cmd.Parameters.Add(new SqlParameter("@Lastname", adminIn.LastName));
-                        cmd.Parameters.Add(new SqlParameter("@DocumentNumber", adminIn.DocumentNumber));
-                        cmd.Parameters.Add(new SqlParameter("@Telephone", adminIn.Telephone));
-                        cmd.Parameters.Add(new SqlParameter("@Password", adminIn.Password));
-                        cmd.Parameters.Add(new SqlParameter("@Username", adminIn.Username));
+                        cmd.Parameters.Add(new SqlParameter("@Name", AdminIn.Name));
+                        cmd.Parameters.Add(new SqlParameter("@Lastname", AdminIn.LastName));
+                        cmd.Parameters.Add(new SqlParameter("@DocumentNumber", AdminIn.DocumentNumber));
+                        cmd.Parameters.Add(new SqlParameter("@Telephone", AdminIn.Telephone));
+                        cmd.Parameters.Add(new SqlParameter("@Password", AdminIn.Password));
+                        cmd.Parameters.Add(new SqlParameter("@Username", AdminIn.Username));
 
                         int rtnInsert = Convert.ToInt32(cmd.ExecuteNonQuery());
                         if (rtnInsert > 0)
@@ -185,7 +185,7 @@ namespace stadium_management.Persistence
             return result;
         }
 
-        public static DeleteAdministratorOut DeleteAdministrator(Administrator adminIn)
+        public static DeleteAdministratorOut DeleteAdministrator(Administrator AdminIn)
         {
             DeleteAdministratorOut result = new DeleteAdministratorOut { OperationResult = OperationResult.Error };
             try
@@ -198,7 +198,7 @@ namespace stadium_management.Persistence
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new SqlParameter("@AdministratorId", adminIn.Id));
+                    cmd.Parameters.Add(new SqlParameter("@AdministratorId", AdminIn.Id));
 
                     int rtnDelete = cmd.ExecuteNonQuery();
                     if (rtnDelete > 0)
@@ -219,7 +219,7 @@ namespace stadium_management.Persistence
             return result;
         }
 
-        public static GetAdministratorByIdOut GetAdministratorById(Administrator adminIn)
+        public static GetAdministratorByIdOut GetAdministratorById(Administrator AdminIn)
         {
             GetAdministratorByIdOut result = new GetAdministratorByIdOut { OperationResult = OperationResult.Error, Administrator = new Administrator() };
             try
@@ -232,7 +232,7 @@ namespace stadium_management.Persistence
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new SqlParameter("@AdministratorId", adminIn.Id));
+                    cmd.Parameters.Add(new SqlParameter("@AdministratorId", AdminIn.Id));
 
                     using (SqlDataReader oReader = cmd.ExecuteReader())
                     {
@@ -269,7 +269,7 @@ namespace stadium_management.Persistence
             return result;
         }
 
-        public static UpdateAdministratorOut UpdateAdministrator(Administrator adminIn)
+        public static UpdateAdministratorOut UpdateAdministrator(Administrator AdminIn)
         {
             UpdateAdministratorOut result = new UpdateAdministratorOut { OperationResult = OperationResult.Error };
 
@@ -282,13 +282,13 @@ namespace stadium_management.Persistence
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new SqlParameter("@AdministratorId", adminIn.Id));
-                    cmd.Parameters.Add(new SqlParameter("@Name", adminIn.Name));
-                    cmd.Parameters.Add(new SqlParameter("@Lastname", adminIn.LastName));
-                    cmd.Parameters.Add(new SqlParameter("@DocumentNumber", adminIn.DocumentNumber));
-                    cmd.Parameters.Add(new SqlParameter("@Telephone", adminIn.Telephone));
-                    cmd.Parameters.Add(new SqlParameter("@Username", adminIn.Username));
-                    cmd.Parameters.Add(new SqlParameter("@Password", adminIn.Password));
+                    cmd.Parameters.Add(new SqlParameter("@AdministratorId", AdminIn.Id));
+                    cmd.Parameters.Add(new SqlParameter("@Name", AdminIn.Name));
+                    cmd.Parameters.Add(new SqlParameter("@Lastname", AdminIn.LastName));
+                    cmd.Parameters.Add(new SqlParameter("@DocumentNumber", AdminIn.DocumentNumber));
+                    cmd.Parameters.Add(new SqlParameter("@Telephone", AdminIn.Telephone));
+                    cmd.Parameters.Add(new SqlParameter("@Username", AdminIn.Username));
+                    cmd.Parameters.Add(new SqlParameter("@Password", AdminIn.Password));
 
                     cmd.Parameters.Add("@AdministratorUsernameExist", SqlDbType.Bit);
                     cmd.Parameters["@AdministratorUsernameExist"].Direction = ParameterDirection.Output;

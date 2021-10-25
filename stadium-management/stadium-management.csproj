@@ -102,25 +102,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientUi\Default.aspx" />
-    <Content Include="ClientUi\favicon.ico" />
-    <Content Include="ClientUi\Global.asax" />
-    <Content Include="ClientUi\Images\DeleteIcon.png" />
-    <Content Include="ClientUi\Images\EditIcon.png" />
-    <Content Include="ClientUi\Pages\AdministratorManagement.aspx" />
-    <Content Include="ClientUi\Pages\HomePublic.aspx" />
-    <Content Include="ClientUi\Pages\LoginUser.aspx" />
-    <Content Include="ClientUi\Pages\RegisterClient.aspx" />
-    <Content Include="ClientUi\Scripts\bootstrap.min.js" />
-    <Content Include="ClientUi\Scripts\mdb.min.js" />
-    <Content Include="ClientUi\Site.Master" />
-    <Content Include="ClientUi\Styles\bootstrap.min.css" />
-    <Content Include="ClientUi\Styles\mdb.min.css" />
-    <Content Include="ClientUi\Styles\Styles.css" />
+    <Content Include="Frontend\Default.aspx" />
+    <Content Include="Frontend\favicon.ico" />
+    <Content Include="Frontend\Forms\EventManagement.aspx" />
+    <Content Include="Frontend\Global.asax" />
+    <Content Include="Frontend\ImagesUpload\noImage.jpg" />
+    <Content Include="Frontend\Images\DeleteIcon.png" />
+    <Content Include="Frontend\Images\EditIcon.png" />
+    <Content Include="Frontend\Forms\AdministratorManagement.aspx" />
+    <Content Include="Frontend\Forms\HomePublic.aspx" />
+    <Content Include="Frontend\Forms\LoginUser.aspx" />
+    <Content Include="Frontend\Forms\RegisterClient.aspx" />
+    <Content Include="Frontend\Images\preview.png" />
+    <Content Include="Frontend\Scripts\bootstrap.min.js" />
+    <Content Include="Frontend\Scripts\mdb.min.js" />
+    <Content Include="Frontend\Scripts\pikaday.css" />
+    <Content Include="Frontend\Scripts\pikaday.jquery.js" />
+    <Content Include="Frontend\Scripts\pikaday.js" />
+    <Content Include="Frontend\Site.Master" />
+    <Content Include="Frontend\Styles\bootstrap.min.css" />
+    <Content Include="Frontend\Styles\mdb.min.css" />
+    <Content Include="Frontend\Styles\Styles.css" />
     <Content Include="Persistence\DatabaseScripts\Administrators.sql" />
     <Content Include="Persistence\DatabaseScripts\Clients.sql" />
-    <Content Include="Persistence\DatabaseScripts\Event.sql" />
-    <Content Include="Persistence\DatabaseScripts\EventType.sql" />
+    <Content Include="Persistence\DatabaseScripts\Events.sql" />
+    <Content Include="Persistence\DatabaseScripts\EventTypes.sql" />
+    <Content Include="Persistence\DatabaseScripts\OrderLine.sql" />
+    <Content Include="Persistence\DatabaseScripts\Orders.sql" />
+    <Content Include="Persistence\DatabaseScripts\Stage.sql" />
     <Content Include="Persistence\DatabaseScripts\StoredProcedures\Administrators_AddAdministrator.sql" />
     <Content Include="Persistence\DatabaseScripts\StoredProcedures\Administrators_DeleteAdministrator.sql" />
     <Content Include="Persistence\DatabaseScripts\StoredProcedures\Administrators_GetAdministratorById.sql" />
@@ -131,55 +140,77 @@
     <Content Include="Persistence\DatabaseScripts\StoredProcedures\Clients_GetClientByUsername.sql" />
     <Content Include="Persistence\DatabaseScripts\StoredProcedures\Clients_SignIn.sql" />
     <Content Include="Persistence\DatabaseScripts\StoredProcedures\Clients_SignUp.sql" />
+    <Content Include="Persistence\DatabaseScripts\StoredProcedures\Events_AddEvent.sql" />
+    <Content Include="Persistence\DatabaseScripts\StoredProcedures\Events_DeleteEvent.sql" />
+    <Content Include="Persistence\DatabaseScripts\StoredProcedures\Events_GetEventById.sql" />
+    <Content Include="Persistence\DatabaseScripts\StoredProcedures\Events_GetEvents.sql" />
+    <Content Include="Persistence\DatabaseScripts\StoredProcedures\Events_GetEventTypes.sql" />
+    <Content Include="Persistence\DatabaseScripts\StoredProcedures\Events_UpdateEvent.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientUi\Admin.Master.cs">
+    <Compile Include="CrossCuttingConcerns\Entities\OrderLine.cs" />
+    <Compile Include="CrossCuttingConcerns\Entities\Stage.cs" />
+    <Compile Include="CrossCuttingConcerns\InMethods\GetEventsIn.cs" />
+    <Compile Include="CrossCuttingConcerns\OutMethods\AddEventOut.cs" />
+    <Compile Include="CrossCuttingConcerns\OutMethods\DeleteEventOut.cs" />
+    <Compile Include="CrossCuttingConcerns\OutMethods\GetEventByIdOut.cs" />
+    <Compile Include="CrossCuttingConcerns\OutMethods\GetEventsOut.cs" />
+    <Compile Include="CrossCuttingConcerns\OutMethods\GetEventTypesOut.cs" />
+    <Compile Include="CrossCuttingConcerns\OutMethods\UpdateEventOut.cs" />
+    <Compile Include="Frontend\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Admin.Master.designer.cs">
+    <Compile Include="Frontend\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\Default.aspx.cs">
+    <Compile Include="Frontend\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Default.aspx.designer.cs">
+    <Compile Include="Frontend\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\Global.asax.cs">
+    <Compile Include="Frontend\Forms\EventManagement.aspx.cs">
+      <DependentUpon>EventManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Frontend\Forms\EventManagement.aspx.designer.cs">
+      <DependentUpon>EventManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\Pages\AdministratorManagement.aspx.cs">
+    <Compile Include="Frontend\Forms\AdministratorManagement.aspx.cs">
       <DependentUpon>AdministratorManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Pages\AdministratorManagement.aspx.designer.cs">
+    <Compile Include="Frontend\Forms\AdministratorManagement.aspx.designer.cs">
       <DependentUpon>AdministratorManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\Pages\BaseAdministrator.cs">
+    <Compile Include="Frontend\Forms\BaseAdministrator.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Pages\HomePublic.aspx.cs">
+    <Compile Include="Frontend\Forms\HomePublic.aspx.cs">
       <DependentUpon>HomePublic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Pages\HomePublic.aspx.designer.cs">
+    <Compile Include="Frontend\Forms\HomePublic.aspx.designer.cs">
       <DependentUpon>HomePublic.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\Pages\LoginUser.aspx.cs">
+    <Compile Include="Frontend\Forms\LoginUser.aspx.cs">
       <DependentUpon>LoginUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Pages\LoginUser.aspx.designer.cs">
+    <Compile Include="Frontend\Forms\LoginUser.aspx.designer.cs">
       <DependentUpon>LoginUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\Pages\RegisterClient.aspx.cs">
+    <Compile Include="Frontend\Forms\RegisterClient.aspx.cs">
       <DependentUpon>RegisterClient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Pages\RegisterClient.aspx.designer.cs">
+    <Compile Include="Frontend\Forms\RegisterClient.aspx.designer.cs">
       <DependentUpon>RegisterClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="CrossCuttingConcerns\Entities\Administrator.cs" />
@@ -211,28 +242,28 @@
     <Compile Include="Persistence\Events.cs" />
     <Compile Include="Persistence\Orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClientUi\Site.Master.cs">
+    <Compile Include="Frontend\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\Site.Master.designer.cs">
+    <Compile Include="Frontend\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="ClientUi\User.Master.cs">
+    <Compile Include="Frontend\User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClientUi\User.Master.designer.cs">
+    <Compile Include="Frontend\User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClientUi\App_Data\" />
+    <Folder Include="Frontend\App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientUi\Admin.Master" />
+    <Content Include="Frontend\Admin.Master" />
     <None Include="packages.config" />
-    <Content Include="ClientUi\User.Master" />
+    <Content Include="Frontend\User.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

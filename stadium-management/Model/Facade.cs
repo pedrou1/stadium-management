@@ -49,5 +49,35 @@ namespace stadium_management.Model
         {
             return Administrators.UpdateAdministrator(input);
         }
+
+        public static GetEventsOut GetEvents(GetEventsIn input)
+        {
+            return Events.GetEvents(input);
+        }
+
+        public static AddEventOut AddEvent(Event input)
+        {
+            return Events.AddEvent(input);
+        }
+
+        public static DeleteEventOut DeleteEvent(Event input)
+        {
+            return Events.DeleteEvent(input);
+        }
+
+        public static GetEventByIdOut GetEventById(Event input)
+        {
+            return Events.GetEventById(input);
+        }
+
+        public static UpdateEventOut UpdateEvent(Event input)
+        {
+            return Events.UpdateEvent(input);
+        }
+
+        public static GetEventTypesOut GetEventTypes()
+        {
+            return Events.GetEventTypes();
+        }
     }
 }

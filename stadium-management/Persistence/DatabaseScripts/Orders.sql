@@ -1,0 +1,6 @@
+CREATE TABLE [Orders]
+(  
+	[OrderId] INT IDENTITY (1, 1),
+	[Date] DATETIME NOT NULL,
+	CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED ([OrderId])
+)

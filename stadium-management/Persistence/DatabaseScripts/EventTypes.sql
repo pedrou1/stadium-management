@@ -1,0 +1,6 @@
+CREATE TABLE EventTypes
+(
+	[EventTypeId] INT IDENTITY (1, 1),
+	[Name] VARCHAR(100) NOT NULL
+	CONSTRAINT [PK_EventType] PRIMARY KEY CLUSTERED ([EventTypeId])
+)
